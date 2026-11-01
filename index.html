@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>幸福度診断アプリ（保存機能付き）</title>
+    <title>幸福度診断アプリ</title>
     <style>
         :root {
             --primary-color: #6200ee;
@@ -197,7 +197,7 @@
 <div class="container">
     <div class="header-card">
         <h1>幸福度診断</h1>
-        <p class="description">直感で現在の状態に最も近いものを選んでください（1〜5段階評価 / 全10問）。回答すると自動でスプレッドシートに結果が保存されます。</p>
+        <p class="description">直感で現在の状態に最も近いものを選んでください（1〜5段階評価 / 全10問）。10問すべてに回答すると、自動でスプレッドシートに結果が保存されます。</p>
     </div>
 
     <div class="scoreboard">
@@ -218,7 +218,7 @@
 </div>
 
 <script>
-    // ★ ここにステップ1で取得したGoogle Apps ScriptのウェブアプリURLを貼り付けてください
+    // ★ ここにご自身のGoogle Apps ScriptのウェブアプリURLを貼り付けてください
     const GAS_URL = https://script.google.com/macros/s/AKfycbwvvFdnoEJu2gsCJ1anA_VsKV_CBTyWbinraT7PD3eyyLn_AfLUKa-CNAgXkjjsvxlS/exec;
 
     const questions = [
@@ -317,7 +317,7 @@
 
     function sendDataToSpreadsheet(score) {
         if (GAS_URL.includes('YOUR_GOOGLE_APPS_SCRIPT')) {
-            document.getElementById("save-status").innerText = "⚠️ スプレッドシートのURLが設定されていません（コード内を確認してください）";
+            document.getElementById("save-status").innerText = "⚠️ スプレッドシートのURLが設定されていません";
             return;
         }
 
@@ -333,7 +333,7 @@
 
         fetch(GAS_URL, {
             method: 'POST',
-            mode: 'no-cors', // GASとのクロスドメイン通信用
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json'
             },
